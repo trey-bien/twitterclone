@@ -1,0 +1,25 @@
+<h2>{{user_profile.username}}</h2>
+<p><a href='/'>Home</a>  
+{% if user_profile.id != request.user.id %}
+    || <a href='/follow/{{user_profile.id}}/'>Follow {{user_profile.username}}</a> ||  <a href='/unfollow/{{user_profile.id}}/'>Unfollow {{user_profile.username}}</a> 
+    
+{% endif %}
+
+{% comment %} <p>Following Count: {{following_count}} || Following List: {{following_list}}</p> {% endcomment %}
+
+<div>
+    Users Followed: {{following_count}}<br>
+    {% for followee in following_list %}
+        <a href='/user/{{followee.id}}/'>{{followee}}</a><br>
+    {% endfor %}
+    <br>
+    
+    Total Tweets: {{tweet_count}}<br>
+    {% for tweet in user_tweets %}
+        <li>
+            <a href='/tweet/{{tweet.id}}/'>{{tweet}}</a><br>
+            {{tweet.date_time}}
+
+        </li>
+    {% endfor %}
+</div>

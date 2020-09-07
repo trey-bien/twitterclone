@@ -1,0 +1,13 @@
+<h1>TwitterClone</h1>
+<h4>Welcome, {{request.user}}!</h4>
+<p><a href="/newtweet/">New Tweet</a> || <a href='/user/{{request.user.id}}/'>My Profile</a> || <a href="/logout/">Logout</a> || <a href="/notification/">New Notifications</a></p>
+
+<ul>
+    {% for tweet in all_tweets %}
+        <li>
+            <a href='/tweet/{{tweet.id}}/'>{{tweet}}</a><br>
+            {{tweet.date_time}} by <a href='/user/{{tweet.tweeter.id}}/'>{{tweet.tweeter}}</a>
+        </li>
+    {% endfor %}
+</ul>
+

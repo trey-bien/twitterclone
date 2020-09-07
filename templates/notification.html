@@ -1,0 +1,8 @@
+<ul>
+    {% for notification in new_notifications %}
+        <li>
+            <a href='/tweet/{{notification.tweet.id}}/'>{{notification.tweet.body}}</a><br>
+            Tweet by <a href='/user/{{notification.tweet.tweeter.id}}'>{{notification.tweet.tweeter}}</a> at {{notification.tweet.date_time}}
+        </li>
+    {% endfor %}
+</ul>
